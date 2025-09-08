@@ -1,11 +1,3 @@
-Of course. Based on your project structure and the entire development journey, here is a comprehensive `README.md` file.
-
-This file is structured to be useful for both end-users who just want to install the application and for developers (or your future self) who want to build it from the source code.
-
-Just copy the text below and save it as `README.md` in the root of your `PROJECT_ABSCONDITUS` folder.
-
----
-
 # Absconditus
 
 A secure, local-first password manager with deep browser integration, built with Python. Absconditus keeps your passwords encrypted on your own machine, accessible via a desktop vault and a seamless browser extension.
@@ -25,7 +17,7 @@ A secure, local-first password manager with deep browser integration, built with
 
 To install Absconditus on your Windows machine, follow these steps:
 
-1.  Go to the **[Releases](https://github.com/your-username/your-repo/releases)** section of this repository.
+1.  Go to the **[Releases](https://github.com/aashishcarmeljai-official/Project_Absconditus.git)** section of this repository.
 2.  Download the latest installer, `Absconditus-Setup-vX.X.exe`.
 3.  Run the installer and follow the on-screen instructions. The setup process will automatically add the background service to your Windows startup.
 
