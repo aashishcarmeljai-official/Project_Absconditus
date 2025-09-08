@@ -1,0 +1,125 @@
+body {
+    width: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container {
+    text-align: center;
+}
+
+h3 {
+    margin-top: 0;
+    color: #8e44ad;
+}
+
+.password-display-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #121212;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+#passwordDisplay {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    color: #f1f1f1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#copyBtn {
+    background: none;
+    border: none;
+    color: #f1f1f1;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-left: 1px solid #333;
+}
+
+.settings {
+    margin-bottom: 1rem;
+}
+
+#lengthSlider {
+    width: 100%;
+}
+
+.main-action {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, #8e44ad, #3498db);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #aaa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer button {
+    background: none;
+    border: 1px solid #555;
+    color: #aaa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add these styles to the bottom of popup.css */
+.save-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #333;
+}
+
+#serviceName {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+    background-color: #121212;
+    border: 1px solid #333;
+    color: #f1f1f1;
+}
+
+.secondary-action {
+    /* Styles for the regenerate button */
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: #f1f1f1;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.main-action:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+}

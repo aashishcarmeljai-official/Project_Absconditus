@@ -1,0 +1,7 @@
+.venv
+desktop_app/build/
+desktop_app/dist/
+desktop_app/Output/
+desktop_app/Absconditus.spec
+desktop_app/passwords.dat
+desktop_app/salt.key

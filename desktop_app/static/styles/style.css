@@ -1,0 +1,417 @@
+/* =================================================================== */
+/* ===== PASSWORD VAULT STYLESHEET ===== */
+/* =================================================================== */
+
+/* ===== 1. GENERAL SETUP & THEME ===== */
+:root {
+    --primary-color-light: #6a11cb;
+    --secondary-color-light: #2575fc;
+    --background-color-light: #f4f7fc;
+    --card-bg-light: #ffffff;
+    --text-color-light: #333;
+    --border-color-light: #e0e0e0;
+
+    --primary-color-dark: #8e44ad;
+    --secondary-color-dark: #3498db;
+    --background-color-dark: #121212;
+    --card-bg-dark: #1e1e1e;
+    --text-color-dark: #f1f1f1;
+    --border-color-dark: #333333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh; /* Add this line */
+}
+
+/* Updated theme styles with background gradients */
+body.light-theme {
+    background-color: var(--background-color-light);
+    background-image: linear-gradient(180deg, #f4f7fc 0%, #d4dcf1 100%);
+    color: var(--text-color-light);
+}
+
+body.dark-theme {
+    background-color: var(--background-color-dark);
+    background-image: linear-gradient(180deg, #121212 0%, #2c3e50 100%);
+    color: var(--text-color-dark);
+}
+
+/* ===== 2. GLOBAL LAYOUT ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-left, .header-right {
+    flex: 1;
+}
+
+.header-center {
+    flex: 2;
+    text-align: center;
+}
+
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header h1 {
+    background: linear-gradient(45deg, var(--primary-color-light), var(--secondary-color-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+    margin: 0;
+    display: inline-block;
+}
+
+body.dark-theme header h1 {
+    background: linear-gradient(45deg, var(--primary-color-dark), var(--secondary-color-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== 3. MAIN VAULT PAGE (index.html) ===== */
+.password-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Style for centering the 'Add New' card when the grid is empty */
+.password-grid.no-passwords {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    grid-template-columns: none;
+    gap: 0;
+}
+
+.password-grid.no-passwords .add-new-card {
+    width: 320px;
+    min-height: 180px;
+    transform: scale(1.05);
+}
+
+.password-card, .add-new-card {
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.password-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .password-card {
+    background-color: var(--card-bg-light);
+    border: 1px solid var(--border-color-light);
+}
+
+body.dark-theme .password-card {
+    background-color: var(--card-bg-dark);
+    border: 1px solid var(--border-color-dark);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.password-display {
+    display: flex;
+    align-items: center;
+}
+
+.password-display input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    color: inherit;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.add-new-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border: 2px dashed;
+}
+
+body.light-theme .add-new-card {
+    color: var(--primary-color-light);
+    border-color: var(--primary-color-light);
+}
+
+body.dark-theme .add-new-card {
+    color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+}
+
+.add-new-card i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== 4. ADD/EDIT PAGE (add.html) ===== */
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .form-container {
+    background-color: var(--card-bg-light);
+}
+
+body.dark-theme .form-container {
+    background-color: var(--card-bg-dark);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input[type="text"], .form-group input[type="password"], .form-group input[type="range"] {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+body.light-theme .form-group input {
+    border: 1px solid var(--border-color-light);
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark-theme .form-group input {
+    border: 1px solid var(--border-color-dark);
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+.password-input-group {
+    display: flex;
+}
+
+.password-input-group input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* ===== 5. LOGIN PAGE (login.html) ===== */
+.login-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.login-form-container {
+    max-width: 420px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+body.light-theme .login-form-container {
+    background-color: var(--card-bg-light);
+}
+
+body.dark-theme .login-form-container {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.login-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary-color-light), var(--secondary-color-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.dark-theme .login-icon {
+    background: linear-gradient(45deg, var(--primary-color-dark), var(--secondary-color-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-form-container h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.login-subtitle {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    line-height: 1.4;
+}
+
+/* ===== 6. BUTTONS & INTERACTIVE ELEMENTS ===== */
+.back-link {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.back-link:hover {
+    opacity: 0.7;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+.theme-toggle-corner {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+
+#generate-btn {
+    padding: 0 1rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+body.light-theme #generate-btn {
+    border-color: var(--border-color-light);
+    background: linear-gradient(45deg, #eee, #fff);
+}
+
+body.dark-theme #generate-btn {
+    border-color: var(--border-color-dark);
+    background: #333;
+    color: #fff;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.copy-btn, .toggle-password-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: inherit;
+    padding: 0 0.5rem;
+}
+
+/* Consolidated .save-btn with animation properties */
+.save-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(45deg, var(--primary-color-light), var(--secondary-color-light));
+    transition: background-color 0.3s, background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 50px; /* Prevents resizing during animation */
+}
+
+body.dark-theme .save-btn {
+    background: linear-gradient(45deg, var(--primary-color-dark), var(--secondary-color-dark));
+}
+
+.save-btn.saving {
+    cursor: not-allowed;
+}
+
+.save-btn.success {
+    background: linear-gradient(45deg, #28a745, #218838);
+}
+
+/* ===== 7. UTILITIES & HELPERS ===== */
+.flash-error {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    font-weight: 500;
+}
+
+body.dark-theme .flash-error {
+    color: #ff8a8a;
+    background-color: rgba(255, 138, 138, 0.1);
+    border-color: rgba(255, 138, 138, 0.2);
+}
+
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}

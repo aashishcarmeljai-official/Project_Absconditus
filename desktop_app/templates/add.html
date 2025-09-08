@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light-theme">
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <a href="{{ url_for('index') }}" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+            </div>
+            <div class="header-center">
+                <h1>Generate New Key</h1>
+            </div>
+            <div class="header-right">
+                <button id="theme-toggle"><i class="fas fa-sun"></i></button>
+            </div>
+        </header>
+
+        <div class="form-container">
+            <form id="password-form" action="{{ url_for('save') }}" method="post">
+                <div class="form-group">
+                    <label for="name">Name / Service</label>
+                    <input type="text" id="name" name="name" required placeholder="e.g., Google, GitHub...">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Generated Password</label>
+                    <div class="password-input-group">
+                        <input type="text" id="password" name="password" required readonly>
+                        <button type="button" id="generate-btn"><i class="fas fa-dice"></i></button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="length">Password Length: <span id="length-value">16</span></label>
+                    <input type="range" id="length" min="8" max="32" value="16">
+                </div>
+
+                <!-- Added id="save-btn" to the button -->
+                <button type="submit" id="save-btn" class="save-btn">
+                    <span>Save Password</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- This element is not strictly needed but good for canvas confetti -->
+    <div id="confetti-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
