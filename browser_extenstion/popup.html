@@ -8,35 +8,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h3>Absconditus</h3>
-
-        <div class="password-display-wrapper">
-            <input type="text" id="passwordDisplay" readonly>
-            <button id="copyBtn" title="Copy to clipboard"><i class="far fa-copy"></i></button>
+    <!-- Main view when vault is unlocked -->
+    <div id="unlockedView">
+        <div class="container">
+            <h3>Password Generator</h3>
+            <div class="password-display-wrapper">
+                <input type="text" id="passwordDisplay" readonly>
+                <button id="copyBtn" title="Copy to clipboard"><i class="far fa-copy"></i></button>
+            </div>
+            <div class="settings">
+                <label for="lengthSlider">Length: <span id="lengthValue">16</span></label>
+                <input type="range" id="lengthSlider" min="8" max="32" value="16">
+            </div>
+            <button id="generateBtn" class="secondary-action"><i class="fas fa-dice"></i> Regenerate</button>
+            <div class="save-section">
+                <input type="text" id="serviceName" placeholder="Name (e.g., Google)">
+                <button id="saveBtn" class="main-action" disabled><i class="fas fa-save"></i> Save to Vault</button>
+            </div>
         </div>
+    </div>
 
-        <div class="settings">
-            <label for="lengthSlider">Length: <span id="lengthValue">16</span></label>
-            <input type="range" id="lengthSlider" min="8" max="32" value="16">
-        </div>
-
-        <button id="generateBtn" class="secondary-action">
-            <i class="fas fa-dice"></i> Regenerate
-        </button>
-
-        <!-- NEW SECTION TO SAVE PASSWORD -->
-        <div class="save-section">
-            <input type="text" id="serviceName" placeholder="Name (e.g., Google)">
-            <button id="saveBtn" class="main-action" disabled>
-                <i class="fas fa-save"></i> Save to Vault
-            </button>
+    <!-- View shown when vault is locked -->
+    <div id="lockedView" style="display: none;">
+        <div class="container">
+            <h3>Vault is Locked</h3>
+            <p id="unlockError" class="error-message"></p>
+            <div class="unlock-form">
+                <input type="password" id="masterPassword" placeholder="Master Password">
+                <button id="unlockBtn" class="main-action"><i class="fas fa-lock-open"></i> Unlock</button>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
-        <button id="checkStatusBtn">Check Status</button>
-        <div id="status"></div>
+        <div id="status">Loading...</div>
     </footer>
 
     <script src="popup.js"></script>

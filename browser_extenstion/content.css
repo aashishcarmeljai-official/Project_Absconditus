@@ -1,0 +1,54 @@
+.absconditus-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    /* This can help ensure the wrapper takes the full width of the input */
+    width: 100%; 
+}
+
+.absconditus-autofill-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    /* *** THIS LINE IS THE FIX *** */
+    background-image: url('chrome-extension://__MSG_@@extension_id__/icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.absconditus-autofill-icon:hover {
+    opacity: 1.0;
+}
+
+/* Add these styles for the autofill menu */
+.absconditus-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2a2a2e;
+    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 10000;
+    max-height: 200px;
+    overflow-y: auto;
+    color: #f1f1f1;
+}
+
+.absconditus-menu-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.absconditus-menu-item:hover {
+    background-color: #8e44ad;
+}
